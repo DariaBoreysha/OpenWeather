@@ -3,11 +3,13 @@ import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.ex.SoftAssertionError;
 import com.github.javafaker.Faker;
 import org.codehaus.groovy.control.ErrorCollector;
+import org.junit.Ignore;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class CreateAnAccountTest extends BaseTest {
 
+    @Ignore("Have to implement try-catch here because of captcha")
     @Test
     public void RegisterWithValidCredentials() throws InterruptedException {
         Faker f = new Faker();
