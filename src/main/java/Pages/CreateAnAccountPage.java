@@ -1,13 +1,17 @@
 package Pages;
 
-import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.WebDriverRunner;
+import com.google.common.util.concurrent.SimpleTimeLimiter;
+import com.google.common.util.concurrent.TimeLimiter;
 
-import static com.codeborne.selenide.Selenide.*;
+import java.util.concurrent.*;
 
-public class CreateAnAccountPage {
+import static com.codeborne.selenide.Selenide.$x;
+import static com.codeborne.selenide.Selenide.switchTo;
+
+public class CreateAnAccountPage{
     protected static SelenideElement usernameInput = $x(".//input[@id='user_username']");
     protected static SelenideElement passwordInput = $x(".//input[@id='user_password']");
     protected static SelenideElement repeatPasswordInput = $x(".//input[@id='user_password_confirmation']");
@@ -24,13 +28,6 @@ public class CreateAnAccountPage {
         String ModalWindowTitleText = modalWindowTitle.getText();
         return ModalWindowTitleText;
     }
-
-    public String getURLAfterRegistration() {
-        String currentURL = WebDriverRunner.getWebDriver().getCurrentUrl();
-        return currentURL;
-    }
-
-
 
     public void clickSubmitButton() {
         submitButton.click();
@@ -60,26 +57,14 @@ public class CreateAnAccountPage {
         repeatPasswordInput.sendKeys(repassword);
     }
 
-
-    public void createAnAccount(String username, String password, String repassword, String email) throws InterruptedException {
+    public void doCaptcha() throws InterruptedException {
         String originalWindow = WebDriverRunner.getWebDriver().getWindowHandle();
-        clickOnAgeCheckbox();
-        clickOnPrivacyCheckbox();
-        enterUsername(username);
-        enterPassword(password);
-        reEnterPassword(repassword);
-        enterEmail(email);
-        Selenide.executeJavaScript("window.scroll(0,500);");
         Thread.sleep(3000);
         switchTo().frame(captchaFrame);
         Thread.sleep(3000);
         captchaBox.click();
-        Thread.sleep(3000);
+        Thread.sleep(1000);
         switchTo().window(originalWindow);
-        clickSubmitButton();
     }
 
-    public static SelenideElement getSubmitButton() {
-        return submitButton;
-    }
 }
