@@ -1,18 +1,18 @@
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
-import com.codeborne.selenide.ex.SoftAssertionError;
+import com.codeborne.selenide.WebDriverRunner;
 import com.github.javafaker.Faker;
-import org.codehaus.groovy.control.ErrorCollector;
-import org.junit.Ignore;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
+import static com.codeborne.selenide.Selenide.$x;
+import static com.codeborne.selenide.Selenide.switchTo;
+
 public class CreateAnAccountTest extends BaseTest {
 
-
+    
     @Test
-    @Disabled("Test needs try-catch")
     public void RegisterWithValidCredentials() throws InterruptedException {
         Faker f = new Faker();
         String pass = f.internet().password();
@@ -21,19 +21,29 @@ public class CreateAnAccountTest extends BaseTest {
         }
         signIpPage.openSignInPage();
         signIpPage.goToRegistryForm();
-        /*try{createAnAccountPage.createAnAccount(f.name().firstName(), pass, pass, f.internet().emailAddress());
-            Assertions.assertEquals("How and where will you use our API?", createAnAccountPage.getModalWindowTitleText());}
-        catch{
-        }*/
-
-    }
-
-    @Test
-    public void RegisterWithAllEmptyFields() {
-        Faker f = new Faker();
-        signIpPage.openSignInPage();
-        signIpPage.goToRegistryForm();
+        createAnAccountPage.enterUsername(f.name().firstName());
+        createAnAccountPage.enterPassword(pass);
+        createAnAccountPage.reEnterPassword(pass);
+        createAnAccountPage.enterEmail(f.internet().emailAddress());
+        createAnAccountPage.clickOnPrivacyCheckbox();
+        createAnAccountPage.clickOnAgeCheckbox();
         Selenide.executeJavaScript("window.scroll(0,500);");
-        createAnAccountPage.getSubmitButton().shouldBe(Condition.disabled);
+        createAnAccountPage.doCaptcha();
+
+        /**
+         * Капча не выкидывала никакого исключения, поэтому try-catch не могла использовать :(
+         * Сделала условие на отображение капчи на странице
+         * Думала еще о таймерах, чтобы закрыть метод после определенного времени, но не поняла, как к моему случаю адаптировать
+         */
+
+        if($x(".//iframe[@title='текущую проверку reCAPTCHA можно пройти в течение ещё двух минут']").isDisplayed()){
+            switchTo().frame($x(".//iframe[@title='текущую проверку reCAPTCHA можно пройти в течение ещё двух минут']"));
+            $x(".//button[@id='recaptcha-verify-button']").is(Condition.interactable);
+        }else{
+            createAnAccountPage.clickSubmitButton();
+            Assertions.assertEquals("How and where will you use our API?", createAnAccountPage.getModalWindowTitleText());
+        }
     }
+
 }
+
