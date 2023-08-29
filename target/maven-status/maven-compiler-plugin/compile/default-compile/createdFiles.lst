@@ -1,0 +1,5 @@
+Pages\CreateAnAccountPage.class
+Pages\MainPage.class
+API\GetWeather.class
+Pages\SignIpPage.class
+API\RootData.class
