@@ -62,6 +62,7 @@ public class CreateAnAccountPage {
 
 
     public void createAnAccount(String username, String password, String repassword, String email) throws InterruptedException {
+        String originalWindow = WebDriverRunner.getWebDriver().getWindowHandle();
         clickOnAgeCheckbox();
         clickOnPrivacyCheckbox();
         enterUsername(username);
@@ -69,11 +70,13 @@ public class CreateAnAccountPage {
         reEnterPassword(repassword);
         enterEmail(email);
         Selenide.executeJavaScript("window.scroll(0,500);");
-   /*     Thread.sleep(4000);
+        Thread.sleep(4000);
         switchTo().frame(captchaFrame);
         Thread.sleep(4000);
-        captchaBox.click();*/
-        Thread.sleep(20000);
+        captchaBox.click();
+        Thread.sleep(4000);
+        switchTo().window(originalWindow);
+        //Thread.sleep(20000);
         clickSubmitButton();
     }
 
