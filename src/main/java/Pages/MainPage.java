@@ -16,13 +16,6 @@ public class MainPage {
     protected static SelenideElement cityTitletext = $x(".//div[@class='grid-container grid-4-5']//h2");
     protected static SelenideElement SignInLink = $x(".//div[@id='desktop-menu']//li[@class='user-li']/a");
 
- /*   public MainPage openMainPage() {
-        Selenide.open("https://openweathermap.org/");
-        return this;
-    }*/
-
-
-
     public MainPage searchWeatherByCityName(String cityName) {
         searchInput.sendKeys(cityName);
         searchButton.shouldBe(Condition.interactable);
