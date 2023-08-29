@@ -43,7 +43,6 @@
             <version>2.24.0</version>
         </dependency>
         <dependency>
-
             <groupId>io.rest-assured</groupId>
             <artifactId>rest-assured</artifactId>
             <version>5.1.0</version>
@@ -57,11 +56,6 @@
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
             <version>${slf4j-simple.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <version>42.2.18</version>
         </dependency>
         <dependency>
             <groupId>org.apache.maven</groupId>
@@ -106,9 +100,9 @@
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
                     </argLine>
                     <argLine>-Dfile.encoding=UTF-8</argLine>
-                    <suiteXmlFiles>
-                        <suiteXmlFile>JUnit.xml</suiteXmlFile>
-                    </suiteXmlFiles>
+                    <systemPropertyVariables>
+                        <allure.results.directory>${project.build.directory}\allure-results</allure.results.directory>
+                    </systemPropertyVariables>
                 </configuration>
                 <dependencies>
                     <dependency>
@@ -124,13 +118,12 @@
                 <version>${allure-maven.version}</version>
                 <configuration>
                     <reportVersion>${reportVersion.version}</reportVersion>
-
-
                 </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
                 <configuration>
                     <source>11</source>
                     <target>11</target>

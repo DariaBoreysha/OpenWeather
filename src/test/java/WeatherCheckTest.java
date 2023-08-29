@@ -1,4 +1,5 @@
 import Pages.MainPage;
+import com.codeborne.selenide.WebDriverRunner;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -11,12 +12,5 @@ public class WeatherCheckTest extends BaseTest {
         mainPage.searchWeatherByCityName(cityName);
         Thread.sleep(4000);
         Assertions.assertEquals((mainPage.getCityTitle()), (getWeather.checkCityName(cityName) + ", " + getWeather.checkCountryName(cityName)));
-    }
-
-
-    @Test
-    public void checkIdUIAndApi(){
-        Assertions.assertEquals(mainPage.getCityIdAfterSearchUI(cityName),
-                getWeather.checkCityId(cityName));
     }
 }

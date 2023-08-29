@@ -70,13 +70,12 @@ public class CreateAnAccountPage {
         reEnterPassword(repassword);
         enterEmail(email);
         Selenide.executeJavaScript("window.scroll(0,500);");
-        Thread.sleep(4000);
+        Thread.sleep(3000);
         switchTo().frame(captchaFrame);
-        Thread.sleep(4000);
+        Thread.sleep(3000);
         captchaBox.click();
-        Thread.sleep(4000);
+        Thread.sleep(3000);
         switchTo().window(originalWindow);
-        //Thread.sleep(20000);
         clickSubmitButton();
     }
 

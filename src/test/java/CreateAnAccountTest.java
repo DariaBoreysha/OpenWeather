@@ -1,6 +1,8 @@
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.ex.SoftAssertionError;
 import com.github.javafaker.Faker;
+import org.codehaus.groovy.control.ErrorCollector;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -16,7 +18,7 @@ public class CreateAnAccountTest extends BaseTest {
         signIpPage.openSignInPage();
         signIpPage.goToRegistryForm();
         createAnAccountPage.createAnAccount(f.name().firstName(), pass, pass, f.internet().emailAddress());
-        Assertions.assertEquals("How and where will you use our API?",createAnAccountPage.getModalWindowTitleText());
+        Assertions.assertEquals("How and where will you use our API?", createAnAccountPage.getModalWindowTitleText());
     }
 
     @Test
