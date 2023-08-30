@@ -19,7 +19,8 @@ public class CreateAnAccountTest extends BaseTest {
         if (pass.length() < 8) {
             pass = pass + 12345678;
         }
-        signIpPage.openSignInPage();
+        mainPage.openSignInPage();
+        Thread.sleep(5000);
         signIpPage.goToRegistryForm();
         createAnAccountPage.enterUsername(f.name().firstName());
         createAnAccountPage.enterPassword(pass);
