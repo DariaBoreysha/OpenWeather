@@ -4,7 +4,6 @@ import Pages.MainPage;
 import Pages.SignIpPage;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
-import com.codeborne.selenide.WebDriverRunner;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.selenide.AllureSelenide;
@@ -30,10 +29,14 @@ public class BaseTest {
         WebDriverManager.chromedriver().setup();
     }
 
+    /**
+     * WebDriverRunner.getWebDriver().manage().window().maximize(); - Jenkins не видит элементы теста с такими настройками
+     */
+
     @BeforeEach
     public void openPages() {
         open("https://openweathermap.org/");
-        WebDriverRunner.getWebDriver().manage().window().maximize();
+        Configuration.browserSize = "1382x744";
         clearBrowserCookies();
     }
 

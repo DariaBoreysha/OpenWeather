@@ -1,17 +1,12 @@
 package Pages;
 
-import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.WebDriverRunner;
-import com.google.common.util.concurrent.SimpleTimeLimiter;
-import com.google.common.util.concurrent.TimeLimiter;
-
-import java.util.concurrent.*;
 
 import static com.codeborne.selenide.Selenide.$x;
 import static com.codeborne.selenide.Selenide.switchTo;
 
-public class CreateAnAccountPage{
+public class CreateAnAccountPage {
     protected static SelenideElement usernameInput = $x(".//input[@id='user_username']");
     protected static SelenideElement passwordInput = $x(".//input[@id='user_password']");
     protected static SelenideElement repeatPasswordInput = $x(".//input[@id='user_password_confirmation']");

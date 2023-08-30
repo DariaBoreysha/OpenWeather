@@ -27,6 +27,7 @@ public class GetWeather {
         String idFromResponse = response.jsonPath().getString("id");
         return idFromResponse;
     }
+
     public String checkCountryName(String cityName) {
         Response response = given()
                 .params("q", cityName, "appid", KEY)

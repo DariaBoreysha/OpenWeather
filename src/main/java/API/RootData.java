@@ -6,7 +6,6 @@ public class RootData {
     public String country;
 
 
-
     public String getName() {
         return name;
     }

@@ -1,11 +1,11 @@
 package Pages;
 
-import com.codeborne.selenide.*;
-import org.openqa.selenium.WebDriver;
+import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.SelenideElement;
+import com.codeborne.selenide.WebDriverRunner;
 
-import java.time.Duration;
-
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.$x;
+import static com.codeborne.selenide.Selenide.page;
 
 public class MainPage {
 
@@ -23,28 +23,29 @@ public class MainPage {
         searchDropdownOption1.click();
         return new MainPage();
     }
-    public String getCityTitle(){
+
+    public String getCityTitle() {
         String cityTitle = cityTitleText.getText();
         return cityTitle;
     }
 
-    public SignIpPage openSignInPage(){
+    public SignIpPage openSignInPage() {
         signInLink.shouldBe(Condition.visible);
         signInLink.shouldBe(Condition.interactable);
         signInLink.click();
         return page(new SignIpPage());
     }
+
     /**
-     *
-     * Метод ниже надо доработать, потому что возвращает базовый URL без добавления id города
+     * Хотела дополнительно проверить, что ID, получаемый с RestAssured и в URL на UI совпадают, но
+     * метод ниже надо доработать, потому что возвращает базовый URL без добавления id города
      */
-    public String getCityIdAfterSearchUI(String cityName){
+    public String getCityIdAfterSearchUI(String cityName) {
         this.searchWeatherByCityName(cityName);
         String URL = WebDriverRunner.getWebDriver().getCurrentUrl();
         String uiId = URL.substring(31, URL.length());
-        return  uiId;
+        return uiId;
     }
-
 
 
 }
