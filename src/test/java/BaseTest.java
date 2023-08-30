@@ -33,6 +33,7 @@ public class BaseTest {
     /**
      * Configuration.browserSize = "1920x1080";
      * WebDriverRunner.getWebDriver().manage().window().maximize(); - Jenkins не видит элементы теста с такими настройками
+     * Тест с регистрацией не падает только если не открывать окно браузера
      */
 
     @BeforeEach
