@@ -29,6 +29,10 @@ public class MainPage {
         return cityTitle;
     }
 
+    /**
+     *
+     * Метод ниже надо доработать, потому что возвращает базовый URL без добавления id города
+     */
     public String getCityIdAfterSearchUI(String cityName){
         this.searchWeatherByCityName(cityName);
         String URL = WebDriverRunner.getWebDriver().getCurrentUrl();

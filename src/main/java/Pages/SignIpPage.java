@@ -2,6 +2,7 @@ package Pages;
 
 import com.codeborne.selenide.SelenideElement;
 
+import static Pages.MainPage.SignInLink;
 import static com.codeborne.selenide.Selenide.$x;
 
 public class SignIpPage {

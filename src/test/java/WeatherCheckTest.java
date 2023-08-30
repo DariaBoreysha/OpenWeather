@@ -1,5 +1,3 @@
-import Pages.MainPage;
-import com.codeborne.selenide.WebDriverRunner;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

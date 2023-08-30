@@ -36,8 +36,8 @@ public class CreateAnAccountTest extends BaseTest {
          * Думала еще о таймерах, чтобы закрыть метод после определенного времени, но не поняла, как к моему случаю адаптировать
          */
 
-        if($x(".//iframe[@title='текущую проверку reCAPTCHA можно пройти в течение ещё двух минут']").isDisplayed()){
-            switchTo().frame($x(".//iframe[@title='текущую проверку reCAPTCHA можно пройти в течение ещё двух минут']"));
+        if($x(".//div[@class='g-recaptcha-bubble-arrow']/following-sibling::div/child::iframe").isDisplayed()){
+            switchTo().frame($x(".//div[@class='g-recaptcha-bubble-arrow']/following-sibling::div/child::iframe"));
             $x(".//button[@id='recaptcha-verify-button']").is(Condition.interactable);
         }else{
             createAnAccountPage.clickSubmitButton();
