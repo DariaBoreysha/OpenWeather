@@ -18,6 +18,7 @@ public class MainTest extends BaseTest {
     String cityName = "Oxford";
 
     @Test
+    @Description("Checking the correctness of data received according to the entered city (API + UI)")
     public void checkCityNamesViaApiAndUI() throws InterruptedException {
         mainPage.searchWeatherByCityName(cityName);
         Thread.sleep(4000);
