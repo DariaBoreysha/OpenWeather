@@ -38,7 +38,7 @@ public class BaseTest {
     @BeforeEach
     public void openPages() {
         open("https://openweathermap.org/");
-        WebDriverRunner.getWebDriver().manage().window().fullscreen();
+        Configuration.browserSize = "1920x1080";
         clearBrowserCookies();
     }
 

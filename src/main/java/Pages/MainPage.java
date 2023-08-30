@@ -1,6 +1,7 @@
 package Pages;
 
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.WebDriverRunner;
 
@@ -30,6 +31,7 @@ public class MainPage {
     }
 
     public SignIpPage openSignInPage() {
+        Selenide.executeJavaScript("window.scroll(250,0);");
         signInLink.shouldBe(Condition.visible);
         signInLink.shouldBe(Condition.interactable);
         signInLink.click();
