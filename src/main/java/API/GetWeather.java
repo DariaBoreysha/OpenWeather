@@ -17,25 +17,5 @@ public class GetWeather {
         String cityFromResponse = response.jsonPath().getString("name");
         return cityFromResponse;
     }
-
-    public String checkCityId(String cityName) {
-        Response response = given()
-                .params("q", cityName, "appid", KEY)
-                .when()
-                .get(URL)
-                .then().extract().response();
-        String idFromResponse = response.jsonPath().getString("id");
-        return idFromResponse;
-    }
-
-    public String checkCountryName(String cityName) {
-        Response response = given()
-                .params("q", cityName, "appid", KEY)
-                .when()
-                .get(URL)
-                .then().extract().response();
-        String countryFromResponse = response.jsonPath().getString("sys.country");
-        return countryFromResponse;
-    }
 }
 

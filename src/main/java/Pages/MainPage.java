@@ -31,22 +31,9 @@ public class MainPage {
     }
 
     public SignIpPage openSignInPage() {
-        Selenide.executeJavaScript("window.scroll(500,0);");
-        signInLink.shouldBe(Condition.visible);
         signInLink.shouldBe(Condition.interactable);
         signInLink.click();
         return page(new SignIpPage());
-    }
-
-    /**
-     * Хотела дополнительно проверить, что ID, получаемый с RestAssured и в URL на UI совпадают, но
-     * метод ниже надо доработать, потому что возвращает базовый URL без добавления id города
-     */
-    public String getCityIdAfterSearchUI(String cityName) {
-        this.searchWeatherByCityName(cityName);
-        String URL = WebDriverRunner.getWebDriver().getCurrentUrl();
-        String uiId = URL.substring(31, URL.length());
-        return uiId;
     }
 
 
