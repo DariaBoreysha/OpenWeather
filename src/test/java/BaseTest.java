@@ -37,6 +37,7 @@ public class BaseTest {
 
     @BeforeEach
     public void openPages() {
+        Configuration.headless = true;
         open("https://openweathermap.org/");
         Configuration.browserSize = "1920x1080";
         clearBrowserCookies();
