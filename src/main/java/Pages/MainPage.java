@@ -31,7 +31,7 @@ public class MainPage {
     }
 
     public SignIpPage openSignInPage() {
-        Selenide.executeJavaScript("window.scroll(250,0);");
+        Selenide.executeJavaScript("window.scroll(500,0);");
         signInLink.shouldBe(Condition.visible);
         signInLink.shouldBe(Condition.interactable);
         signInLink.click();
