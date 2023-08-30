@@ -20,7 +20,6 @@ public class CreateAnAccountTest extends BaseTest {
             pass = pass + 12345678;
         }
         mainPage.openSignInPage();
-        Thread.sleep(5000);
         signIpPage.goToRegistryForm();
         createAnAccountPage.enterUsername(f.name().firstName());
         createAnAccountPage.enterPassword(pass);

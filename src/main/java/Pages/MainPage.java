@@ -30,6 +30,7 @@ public class MainPage {
 
     public SignIpPage openSignInPage(){
         signInLink.shouldBe(Condition.visible);
+        signInLink.shouldBe(Condition.interactable);
         signInLink.click();
         return page(new SignIpPage());
     }
