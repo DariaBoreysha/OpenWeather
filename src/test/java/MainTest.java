@@ -10,9 +10,13 @@ public class MainTest extends BaseTest {
 
     @Test
     @Description("Checking the correctness of data received according to the entered city (API + UI)")
-    public void checkCityNamesViaApiAndUI() throws InterruptedException {
+    public void checkCityNamesViaApiAndUI(){
         mainPage.searchWeatherByCityName(Config.CITY_NAME);
-        Thread.sleep(4000);
+        try{Thread.sleep(4000);}
+        catch (InterruptedException e){
+            e.getMessage();
+            System.out.println("Rerun tests");
+        }
         String cityFromUI = mainPage.getCityTitle();
         Assert.assertTrue(cityFromUI.contains(Config.CITY_NAME));
         String cityFromAPI = getWeather.checkCityName(Config.CITY_NAME);

@@ -3,8 +3,7 @@ package Pages;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 
-import static com.codeborne.selenide.Selenide.$x;
-import static com.codeborne.selenide.Selenide.page;
+import static com.codeborne.selenide.Selenide.*;
 
 public class MainPage {
 
@@ -16,9 +15,9 @@ public class MainPage {
 
     public MainPage searchWeatherByCityName(String cityName) {
         searchInput.sendKeys(cityName);
-        searchButton.shouldBe(Condition.interactable);
+        sleep(4000);
         searchButton.click();
-        searchDropdownOption1.shouldBe(Condition.visible);
+        sleep(4000);
         searchDropdownOption1.click();
         return new MainPage();
     }
@@ -29,6 +28,7 @@ public class MainPage {
     }
 
     public SignIpPage openSignInPage() {
+        sleep(5000);
         signInLink.shouldBe(Condition.interactable);
         signInLink.click();
         return page(new SignIpPage());
