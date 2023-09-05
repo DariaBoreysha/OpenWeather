@@ -5,6 +5,8 @@ import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import static com.codeborne.selenide.Selenide.sleep;
+
 public class MainTest extends BaseTest {
 
 
@@ -12,11 +14,7 @@ public class MainTest extends BaseTest {
     @Description("Checking the correctness of data received according to the entered city (API + UI)")
     public void checkCityNamesViaApiAndUI(){
         mainPage.searchWeatherByCityName(Config.CITY_NAME);
-        try{Thread.sleep(4000);}
-        catch (InterruptedException e){
-            e.getMessage();
-            System.out.println("Rerun tests");
-        }
+        sleep(4000);
         String cityFromUI = mainPage.getCityTitle();
         Assert.assertTrue(cityFromUI.contains(Config.CITY_NAME));
         String cityFromAPI = getWeather.checkCityName(Config.CITY_NAME);
