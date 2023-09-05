@@ -4,7 +4,6 @@ import Pages.MainPage;
 import Pages.SignIpPage;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
-import com.codeborne.selenide.WebDriverRunner;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.selenide.AllureSelenide;
@@ -26,21 +25,19 @@ public class BaseTest {
     @BeforeAll
     public static void setup() {
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
-        Configuration.timeout = 1000000;
         WebDriverManager.chromedriver().setup();
     }
 
     /**
-     * Configuration.browserSize = "1920x1080";
      * WebDriverRunner.getWebDriver().manage().window().maximize(); - Jenkins не видит элементы теста с такими настройками
-     * Тест с регистрацией не падает только если не открывать окно браузера
+     * Тест с регистрацией не падает только если не открывать окно браузера, т.е. "Configuration.headless = true;"
      */
 
     @BeforeEach
     public void openPages() {
-        Configuration.headless = true;
-        open("https://openweathermap.org/");
-        Configuration.browserSize = "1920x1080";
+        Configuration.headless = Config.HEADLESS;
+        open(Config.URL);
+        Configuration.browserSize = Config.WINDOW_SIZE;
         clearBrowserCookies();
     }
 
