@@ -5,6 +5,7 @@ import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import static Constants.Config.Variables.CITY_NAME;
 import static com.codeborne.selenide.Selenide.sleep;
 
 public class MainTest extends BaseTest {
@@ -12,12 +13,12 @@ public class MainTest extends BaseTest {
 
     @Test
     @Description("Checking the correctness of data received according to the entered city (API + UI)")
-    public void checkCityNamesViaApiAndUI(){
-        mainPage.searchWeatherByCityName(Config.CITY_NAME);
+    public void checkCityNamesViaApiAndUI() {
+        mainPage.searchWeatherByCityName(CITY_NAME);
         sleep(4000);
         String cityFromUI = mainPage.getCityTitle();
-        Assert.assertTrue(cityFromUI.contains(Config.CITY_NAME));
-        String cityFromAPI = getWeather.checkCityName(Config.CITY_NAME);
+        Assert.assertTrue(cityFromUI.contains(CITY_NAME));
+        String cityFromAPI = getWeather.checkCityName(CITY_NAME);
         Assertions.assertTrue(cityFromUI.contains(cityFromAPI));
     }
 

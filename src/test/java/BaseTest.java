@@ -12,6 +12,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 
+import static Constants.Config.Variables.*;
 import static com.codeborne.selenide.Selenide.*;
 
 
@@ -35,9 +36,9 @@ public class BaseTest {
 
     @BeforeEach
     public void openPages() {
-        Configuration.headless = Config.HEADLESS;
-        open(Config.URL);
-        Configuration.browserSize = Config.WINDOW_SIZE;
+        Configuration.headless = HEADLESS;
+        open(URL);
+        Configuration.browserSize = WINDOW_SIZE;
         clearBrowserCookies();
     }
 
