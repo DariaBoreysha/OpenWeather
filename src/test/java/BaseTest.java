@@ -26,9 +26,12 @@ public class BaseTest {
     CreateAnAccountPage createAnAccountPage = new CreateAnAccountPage();
 
     @BeforeAll
-    public static void setup() {
+    public static void setUp() {
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
         WebDriverManager.chromedriver().setup();
+        RestAssured.baseURI = WEATHER_URL;
+        RestAssured.basePath = WEATHER_PATH;
+        Configuration.headless = HEADLESS;
     }
 
     /**
@@ -38,9 +41,6 @@ public class BaseTest {
 
     @BeforeEach
     public void openPages() {
-        RestAssured.baseURI = WEATHER_URL;
-        RestAssured.basePath = WEATHER_PATH;
-        Configuration.headless = HEADLESS;
         open(URL);
         Configuration.browserSize = WINDOW_SIZE;
         clearBrowserCookies();
