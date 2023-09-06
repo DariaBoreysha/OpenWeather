@@ -2,7 +2,7 @@ package API;
 
 import io.restassured.response.Response;
 
-import static Constants.Config.ApiVariables.*;
+import static settings.Constants.ApiVariables.*;
 import static io.restassured.RestAssured.given;
 
 public class GetWeather {

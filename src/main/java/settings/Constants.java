@@ -1,6 +1,6 @@
-package Constants;
+package settings;
 
-public class Config {
+public class Constants {
     public static class Variables{
         public static final String CITY_NAME = "Oxford";
         public static final String URL = "https://openweathermap.org/";

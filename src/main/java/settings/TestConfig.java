@@ -1,9 +1,9 @@
-package Constants;
+package settings;
 
 import API.GetWeather;
-import Pages.CreateAnAccountPage;
-import Pages.MainPage;
-import Pages.SignIpPage;
+import pages.CreateAnAccountPage;
+import pages.MainPage;
+import pages.SignIpPage;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.logevents.SelenideLogger;
@@ -19,9 +19,9 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 
-import static Constants.Config.ApiVariables.WEATHER_PATH;
-import static Constants.Config.ApiVariables.WEATHER_URL;
-import static Constants.Config.Variables.*;
+import static settings.Constants.ApiVariables.WEATHER_PATH;
+import static settings.Constants.ApiVariables.WEATHER_URL;
+import static settings.Constants.Variables.*;
 import static com.codeborne.selenide.Selenide.*;
 
 

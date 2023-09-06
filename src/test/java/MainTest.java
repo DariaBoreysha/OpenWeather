@@ -1,12 +1,12 @@
-import Constants.TestConfig;
-import Pages.CreateAnAccountPage;
+import settings.TestConfig;
+import pages.CreateAnAccountPage;
 import com.codeborne.selenide.Selenide;
 import jdk.jfr.Description;
 import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static Constants.Config.Variables.CITY_NAME;
+import static settings.Constants.Variables.CITY_NAME;
 import static com.codeborne.selenide.Selenide.sleep;
 
 public class MainTest extends TestConfig {
