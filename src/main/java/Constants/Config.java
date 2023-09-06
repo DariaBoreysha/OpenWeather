@@ -8,4 +8,11 @@ public class Config {
         public static final Boolean HEADLESS = true;
     }
 
+    public static class ApiVariables{
+        public static final String WEATHER_URL = "https://api.openweathermap.org/";
+        public static final String WEATHER_PATH = "data/2.5/";
+        public static final String GET_WEATHER_BY_CITY = "weather/";
+        public final static String KEY = "802403cdec12a4d2507590f3e48dc407";
+    }
+
 }

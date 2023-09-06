@@ -7,11 +7,13 @@ import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.selenide.AllureSelenide;
+import io.restassured.RestAssured;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 
+import static Constants.Config.ApiVariables.*;
 import static Constants.Config.Variables.*;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -36,6 +38,8 @@ public class BaseTest {
 
     @BeforeEach
     public void openPages() {
+        RestAssured.baseURI = WEATHER_URL;
+        RestAssured.basePath = WEATHER_PATH;
         Configuration.headless = HEADLESS;
         open(URL);
         Configuration.browserSize = WINDOW_SIZE;
