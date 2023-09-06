@@ -1,11 +1,11 @@
 package API;
 
 import io.restassured.response.Response;
+
 import static Constants.Config.ApiVariables.*;
 import static io.restassured.RestAssured.given;
 
 public class GetWeather {
-   // private final static String URL = "https://api.openweathermap.org/data/2.5/weather";
 
 
     public String checkCityName(String cityName) {
