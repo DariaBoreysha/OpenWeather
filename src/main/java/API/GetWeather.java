@@ -13,7 +13,9 @@ public class GetWeather {
                 .params("q", cityName, "appid", KEY)
                 .when()
                 .get(GET_WEATHER_BY_CITY)
-                .then().extract().response();
+                .then()
+                .log().ifError()
+                .extract().response();
         String cityFromResponse = response.jsonPath().getString("name");
         return cityFromResponse;
     }
