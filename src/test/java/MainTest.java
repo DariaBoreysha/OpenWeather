@@ -1,3 +1,4 @@
+import Constants.TestConfig;
 import Pages.CreateAnAccountPage;
 import com.codeborne.selenide.Selenide;
 import jdk.jfr.Description;
@@ -8,7 +9,7 @@ import org.junit.jupiter.api.Test;
 import static Constants.Config.Variables.CITY_NAME;
 import static com.codeborne.selenide.Selenide.sleep;
 
-public class MainTest extends BaseTest {
+public class MainTest extends TestConfig {
 
 
     @Test
