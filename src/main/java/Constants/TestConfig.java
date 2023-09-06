@@ -10,6 +10,10 @@ import com.codeborne.selenide.logevents.SelenideLogger;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.selenide.AllureSelenide;
 import io.restassured.RestAssured;
+import io.restassured.builder.RequestSpecBuilder;
+import io.restassured.builder.ResponseSpecBuilder;
+import io.restassured.specification.RequestSpecification;
+import io.restassured.specification.ResponseSpecification;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
@@ -35,6 +39,11 @@ public class TestConfig {
         RestAssured.baseURI = WEATHER_URL;
         RestAssured.basePath = WEATHER_PATH;
         Configuration.headless = HEADLESS;
+
+        ResponseSpecification responseSpecificationForWeatherApi = new ResponseSpecBuilder()
+                .expectStatusCode(200)
+                .build();
+        RestAssured.responseSpecification = responseSpecificationForWeatherApi;
     }
 
     /**
