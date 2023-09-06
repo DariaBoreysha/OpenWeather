@@ -20,6 +20,7 @@ public class CreateAnAccountPage {
     protected static SelenideElement modalWindowTitle = $x(".//div[@class='modal-header']/h4");
     protected static SelenideElement captchaFrame = $x(".//iframe[@title='reCAPTCHA']");
     protected static SelenideElement captchaTaskFrame = $x(".//div[@class='g-recaptcha-bubble-arrow']/following-sibling::div/child::iframe");
+    protected static SelenideElement captchaTaskButtonForCheck = $x(".//div[@class='g-recaptcha-bubble-arrow']/following-sibling::div/child::iframe");
 
     public SelenideElement getCaptchaTaskFrame() {
         return captchaTaskFrame;
@@ -58,14 +59,15 @@ public class CreateAnAccountPage {
         repeatPasswordInput.sendKeys(repassword);
     }
 
-    public void doCaptcha(){
+    public void doCaptcha() {
         String originalWindow = WebDriverRunner.getWebDriver().getWindowHandle();
-        try{Thread.sleep(3000);
-        switchTo().frame(captchaFrame);
-        Thread.sleep(3000);
-        captchaBox.click();
-        Thread.sleep(1000);}
-        catch (InterruptedException e){
+        try {
+            Thread.sleep(3000);
+            switchTo().frame(captchaFrame);
+            Thread.sleep(3000);
+            captchaBox.click();
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
             e.getMessage();
             System.out.println("Rerun the tests");
         }
@@ -73,11 +75,12 @@ public class CreateAnAccountPage {
     }
 
 
-    public boolean checkCaptcha(){
-        switchTo().frame($x(".//div[@class='g-recaptcha-bubble-arrow']/following-sibling::div/child::iframe"));
-        boolean result = $x(".//button[@id='recaptcha-verify-button']").is(Condition.interactable);
+    public boolean checkCaptcha() {
+        switchTo().frame(captchaTaskFrame);
+        boolean result = captchaTaskButtonForCheck.is(Condition.interactable);
         return result;
     }
+
     public static String generatePassword() {
         Faker f = new Faker();
         String pass = f.internet().password();
