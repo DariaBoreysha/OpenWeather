@@ -6,6 +6,8 @@ import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.time.Duration;
+
 import static settings.Constants.Variables.CITY_NAME;
 import static com.codeborne.selenide.Selenide.sleep;
 
@@ -41,9 +43,12 @@ public class MainTest extends TestConfig {
         /**
          * Капча не выкидывала никакого исключения, поэтому try-catch не могла использовать :(
          * Сделала условие на отображение капчи на странице
-         * Думала еще о таймерах, чтобы закрыть метод после определенного времени, но не поняла, как к моему случаю адаптировать
+         * Если отображается капча с заданием -> делаем
+         * Если нет -> кликаем на кнопку с подтверждением
          *
-         * Поэтому добавила проверку на то, можно ли с кнопкой на самой капче взаимодействовать
+         * Нашла такую проверку в JUnit, чтобы по истечении минуты сообщение выходило:
+         * Assertions.assertTimeout(Duration.ofMinutes(1), () -> {return "Waiting is too long";});
+         * Но решила оставить if-else корявенький обходной путь, чтобы не ждать :)
          */
 
         if (createAnAccountPage.getCaptchaTaskFrame().isDisplayed()) {
