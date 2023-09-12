@@ -1,9 +1,6 @@
 package settings;
 
 import API.GetWeather;
-import pages.CreateAnAccountPage;
-import pages.MainPage;
-import pages.SignIpPage;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.logevents.SelenideLogger;
@@ -18,11 +15,14 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import pages.CreateAnAccountPage;
+import pages.MainPage;
+import pages.SignIpPage;
 
+import static com.codeborne.selenide.Selenide.*;
 import static settings.Constants.ApiVariables.WEATHER_PATH;
 import static settings.Constants.ApiVariables.WEATHER_URL;
 import static settings.Constants.Variables.*;
-import static com.codeborne.selenide.Selenide.*;
 
 
 public class TestConfig {
@@ -34,7 +34,9 @@ public class TestConfig {
 
     @BeforeAll
     public static void setUp() {
+
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
+
         WebDriverManager.chromedriver().setup();
         Configuration.headless = HEADLESS;
 

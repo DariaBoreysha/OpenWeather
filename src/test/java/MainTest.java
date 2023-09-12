@@ -1,22 +1,26 @@
-import settings.TestConfig;
-import pages.CreateAnAccountPage;
 import com.codeborne.selenide.Selenide;
 import jdk.jfr.Description;
 import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import pages.CreateAnAccountPage;
+import settings.TestConfig;
 
-import java.time.Duration;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import static settings.Constants.Variables.CITY_NAME;
 import static com.codeborne.selenide.Selenide.sleep;
+import static settings.Constants.Variables.CITY_NAME;
 
 public class MainTest extends TestConfig {
 
-
+    private static final Logger logger = LoggerFactory.getLogger(MainTest.class);
     @Test
     @Description("Checking the correctness of data received according to the entered city (API + UI)")
     public void checkCityNamesViaApiAndUI() {
+
+        logger.warn("checkCityNamesViaApiAndUI");
+
         mainPage.searchWeatherByCityName(CITY_NAME);
         sleep(4000);
         String cityFromUI = mainPage.getCityTitle();
@@ -28,6 +32,8 @@ public class MainTest extends TestConfig {
     @Test
     @Description("Testing the registration form")
     public void RegisterWithValidCredentials() {
+        logger.warn("RegisterWithValidCredentials");
+
         mainPage.openSignInPage();
         signIpPage.goToRegistryForm();
         createAnAccountPage.enterUsername(CreateAnAccountPage.generateUsername());
